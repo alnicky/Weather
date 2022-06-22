@@ -23,10 +23,10 @@ class CitiesCollectionViewCell: UICollectionViewCell {
         
         addSubview(conditionImage)
         
-//        conditionImage.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
-//        conditionImage.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
-//        conditionImage.topAnchor.constraint(equalTo: topAnchor).isActive = true
-//        conditionImage.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
+        conditionImage.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
+        conditionImage.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
+        conditionImage.topAnchor.constraint(equalTo: topAnchor).isActive = true
+        conditionImage.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
     }
     
     required init?(coder: NSCoder) {
