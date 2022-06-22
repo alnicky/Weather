@@ -12,20 +12,27 @@ final class NetworkManager {
     
     static var shared = NetworkManager()
     
-    func getCurrentForecast(for city: String) {
-        let parameters: [String: String] = ["key": apiKey,
-                                            "q": city,
-                                            "aqi": "no"]
+    func fetchCurrentForecasts(for cities: [String], completionHandler: @escaping ([CurrentForecast]) -> ()) {
+        var forecasts: [CurrentForecast] = []
         
-        AF.request(URLs.currentForecast, parameters: parameters)
-          .validate()
-          .responseDecodable(of: CurrentForecast.self) { (response) in
-              switch response.result {
-              case .success(let value):
-                  print()
-              case .failure(let error):
-                  print("Failed with error: \(error)")
-              }
-          }
+        for city in cities {
+            let parameters: [String: String] = ["key": apiKey,
+                                                "q": city,
+                                                "aqi": "no"]
+            
+            AF.request(URLs.currentForecast, parameters: parameters)
+                .validate()
+                .responseDecodable(of: CurrentForecast.self) { response in
+                    switch response.result {
+                    case .success(let value):
+                        forecasts.append(value)
+                    case .failure(let error):
+                        print("ERROR: \(error)")
+                    }
+                    if forecasts.count == cities.count {
+                        completionHandler(forecasts)
+                    }
+                }
+        }
     }
 }
