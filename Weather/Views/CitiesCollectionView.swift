@@ -24,8 +24,17 @@ class CitiesCollectionView: UICollectionView {
         delegate = self
         dataSource = self
         
+        backgroundColor = .clear
+//        configureGradientBackground()
+        
         register(CitiesCollectionViewCell.self, forCellWithReuseIdentifier: CitiesCollectionViewCell.reuseId)
+        
         translatesAutoresizingMaskIntoConstraints = false
+        layout.minimumLineSpacing = SizeConstants.citiesMinimumLineSpacing
+        contentInset =  UIEdgeInsets(top: 0,
+                                     left: SizeConstants.leftDistanceToView,
+                                     bottom: 0,
+                                     right: SizeConstants.rightDistanceToView)
     }
     
     required init?(coder: NSCoder) {
@@ -33,20 +42,3 @@ class CitiesCollectionView: UICollectionView {
     }
 }
 
-extension CitiesCollectionView: UICollectionViewDelegate {
-    
-}
-
-extension CitiesCollectionView: UICollectionViewDataSource {
-    
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 2
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = dequeueReusableCell(withReuseIdentifier: CitiesCollectionViewCell.reuseId, for: indexPath) as! CitiesCollectionViewCell
-        return cell
-    }
-    
-    
-}
