@@ -11,7 +11,7 @@ import UIKit
 // MARK: UICollectionView Delegate Flow Layout
 extension CitiesCollectionView: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: 180, height: 180)
+        return CGSize(width: SizeConstants.cityIconSide, height: SizeConstants.cityIconSide)
     }
 }
 

@@ -35,6 +35,7 @@ class CitiesCollectionViewCell: UICollectionViewCell {
         cityLabel.textColor = .white
         cityLabel.textAlignment = .left
         cityLabel.font = .boldSystemFont(ofSize: 25)
+        cityLabel.adjustsFontSizeToFitWidth = true
         cityLabel.numberOfLines = 0
         
         addSubview(cityLabel)
@@ -43,7 +44,7 @@ class CitiesCollectionViewCell: UICollectionViewCell {
         cityLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16).isActive = true
         cityLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16).isActive = true
         cityLabel.topAnchor.constraint(equalTo: topAnchor, constant: 10).isActive = true
-        cityLabel.heightAnchor.constraint(equalToConstant: 60).isActive = true
+        cityLabel.heightAnchor.constraint(lessThanOrEqualToConstant: 60).isActive = true
     }
     
     private func configureConditionImage() {
@@ -58,8 +59,8 @@ class CitiesCollectionViewCell: UICollectionViewCell {
         // Constraints
         conditionImage.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -10).isActive = true
         conditionImage.topAnchor.constraint(equalTo: cityLabel.bottomAnchor, constant: SizeConstants.conditionImageTopDistanseToCityLabel).isActive = true
-        conditionImage.widthAnchor.constraint(equalToConstant: 64).isActive = true
-        conditionImage.heightAnchor.constraint(equalToConstant: 64).isActive = true
+        conditionImage.widthAnchor.constraint(lessThanOrEqualToConstant: 64).isActive = true
+        conditionImage.heightAnchor.constraint(lessThanOrEqualToConstant: 64).isActive = true
     }
     
     private func configureTemperatureLabel() {
